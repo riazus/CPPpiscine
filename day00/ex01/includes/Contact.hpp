@@ -1,7 +1,5 @@
-#ifndef CONTACT_H
-# define CONTACT_H
-
-# include <string>
+#pragma once
+#include <string>
 
 class Contact
 {
@@ -32,5 +30,3 @@ private:
 	std::string	_phoneNumber;
 	std::string	_secret;
 };
-
-#endif
