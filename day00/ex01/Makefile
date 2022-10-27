@@ -7,7 +7,7 @@ RM			=	rm -rf
 
 SRCS		=	srcs/Phonebook.cpp \
 				srcs/Contact.cpp \
-				main.cpp
+				srcs/main.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
