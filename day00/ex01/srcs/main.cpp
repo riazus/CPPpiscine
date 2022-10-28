@@ -1,24 +1,37 @@
 #include "../includes/Phonebook.hpp"
 
+std::string handleinput()
+{
+	std::string str;
+
+	std::getline(std::cin, str);
+	if (!std::cin.good())
+	{
+		std::cout << "^D" << std::endl;
+		std::exit(1);
+	}
+	return str;
+}
+
 void addContact(Phonebook *phonebook)
 {
 	Contact 	contact;
 	std::string str;
 
 	std::cout << "First name: ";
-	std::getline(std::cin, str);
+	str = handleinput();
 	contact.setFirstName(str);
 	std::cout << "Last name: ";
-	std::getline(std::cin, str);
+	str = handleinput();
 	contact.setLastName(str);
 	std::cout << "Nickname: ";
-	std::getline(std::cin, str);
+	str = handleinput();
 	contact.setNickName(str);
 	std::cout << "Phone number: ";
-	std::getline(std::cin, str);
+	str = handleinput();
 	contact.setPhoneNumber(str);
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin, str);
+	str = handleinput();
 	contact.setSecret(str);
 	phonebook->setContact(contact);
 }
@@ -59,6 +72,11 @@ void searchContact(Phonebook *phonebook)
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			if (!std::cin.good())
+			{
+				std::cout << "^D" << std::endl;
+				std::exit(1);
+			}
 			std::cout << "Invalid input. Please enter an index between 1 and " << count << ": ";
 		}
 		index--;
@@ -90,7 +108,7 @@ int main()
 	{
 		std::string command;
 		std::cout << std::endl << "Enter a command: ";
-		std::getline(std::cin, command);
+		command = handleinput();
 		if (command == "ADD")
 		{
 			addContact(&phonebook);
