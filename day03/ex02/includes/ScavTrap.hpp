@@ -3,15 +3,13 @@
 
 class ScavTrap : public ClapTrap
 {
-public:
-	ScavTrap();
-	ScavTrap(std::string name);
-	ScavTrap(const ScavTrap& scavTrap);
+	public:
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& scavTrap);
+		ScavTrap& operator=(const ScavTrap& scavTrap);
+		~ScavTrap();
 
-	ScavTrap& operator=(const ScavTrap& scavTrap);
-
-	~ScavTrap();
-
-	void attack(std::string const & target);
-	void guardGate();
+		void attack(std::string const & target);
+		void guardGate();
 };

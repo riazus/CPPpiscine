@@ -3,19 +3,19 @@
 ClapTrap::ClapTrap()
     : name("default"), hp(10), ep(10), ad(10)
 {
-    std::cout << "Default constructor was called" << std::endl;
+    std::cout << "Clap trap default constructor was called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
     : name(name), hp(10), ep(10), ad(10)
 {
-    std::cout << "Constructor with name parameters was called" << std::endl;
+    std::cout << "ClapTrap(\"" << name << "\") constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& clapTrap)
     : name(clapTrap.name), hp(clapTrap.hp), ep(clapTrap.ep), ad(clapTrap.ad)
 {
-    std::cout << "Default constructor was called" << std::endl;
+    std::cout << "ScavTrap copy constructor called on " << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap)

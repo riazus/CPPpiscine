@@ -3,7 +3,7 @@
 ScavTrap::ScavTrap()
 	: ClapTrap()
 {
-	std::cout << "ScavTrap(void) constructor called" << std::endl;
+	std::cout << "ScavTrap default constructor was called" << std::endl;
 	this->hp = 100;
 	this->ep = 50;
 	this->ad = 20;
