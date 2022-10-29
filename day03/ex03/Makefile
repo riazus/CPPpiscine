@@ -5,10 +5,10 @@ INCLUDES	=	includes
 CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -Wno-shadow -I$(INCLUDES)
 RM			=	rm -rf
 
-SRCS		=	srcs/ClapTrap.cpp \
+SRCS		=	srcs/DiamondTrap.cpp \
+				srcs/ClapTrap.cpp \
 				srcs/ScavTrap.cpp \
 				srcs/FragTrap.cpp \
-				srcs/DiamondTrap.cpp \
 				srcs/main.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)

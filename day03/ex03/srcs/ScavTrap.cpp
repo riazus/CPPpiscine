@@ -1,10 +1,10 @@
-#include "../includes/ScavTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 ScavTrap::ScavTrap()
 	: ClapTrap()
 {
-	std::cout << "ScavTrap default constructor was called" << std::endl;
+	std::cout << "ScavTrap(void) constructor called" << std::endl;
 	this->hp = 100;
 	this->ep = 50;
 	this->ad = 20;
@@ -19,15 +19,15 @@ ScavTrap::ScavTrap(std::string name)
 	this->ad = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& scavTrap)
-	: ClapTrap(scavTrap)
+ScavTrap::ScavTrap(const ScavTrap& other)
+	: ClapTrap(other)
 {
-	std::cout << "ScavTrap copy constructor called on " << scavTrap.name << std::endl;
+	std::cout << "ScavTrap copy constructor called on " << other.name << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& rhs)
+ScavTrap& ScavTrap::operator=(const ScavTrap& scavTrap)
 {
-	ClapTrap::operator=(rhs);
+	ClapTrap::operator=(scavTrap);
 	return *this;
 }
 

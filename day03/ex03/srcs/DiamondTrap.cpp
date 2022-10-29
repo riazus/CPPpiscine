@@ -1,17 +1,17 @@
-#include "../includes/DiamondTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 DiamondTrap::DiamondTrap()
-	: ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
+	: ClapTrap("defaultclapname"), ScavTrap(), FragTrap(), name("default")
 {
-	std::cout << "DiamondTrap default constructor was called" << std::endl;
+	std::cout << "DiamondTrap(void) constructor called" << std::endl;
 	this->FragTrap::hp = 100;
 	this->ScavTrap::ep = 50;
 	this->FragTrap::ad = 30;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-	: ClapTrap(name + "clap_name"), ScavTrap(), FragTrap(), name(name)
+	: ClapTrap(name + "clapname"), ScavTrap(), FragTrap(), name(name)
 {
 	std::cout << "DiamondTrap(\"" << name << "\") constructor called" << std::endl;
 	this->FragTrap::hp = 100;
@@ -25,9 +25,9 @@ DiamondTrap::DiamondTrap(const DiamondTrap& other)
 	std::cout << "DiamondTrap copy constructor called on " << other.name << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diomandTrap)
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diamondTrap)
 {
-	ClapTrap::operator=(diomandTrap);
+	ClapTrap::operator=(diamondTrap);
 	ScavTrap();
 	FragTrap();
 	return *this;

@@ -1,10 +1,10 @@
-#include "../includes/FragTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 FragTrap::FragTrap()
 	: ClapTrap()
 {
-	std::cout << "FragTrap default constructor was called" << std::endl;
+	std::cout << "FragTrap(void) constructor called" << std::endl;
 	this->hp = 100;
 	this->ep = 100;
 	this->ad = 30;
@@ -25,9 +25,9 @@ FragTrap::FragTrap(const FragTrap& other)
 	std::cout << "FragTrap copy constructor called on " << other.name << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& rhs)
+FragTrap& FragTrap::operator=(const FragTrap& fragTrap)
 {
-	ClapTrap::operator=(rhs);
+	ClapTrap::operator=(fragTrap);
 	return *this;
 }
 

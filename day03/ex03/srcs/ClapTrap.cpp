@@ -1,43 +1,44 @@
-#include "../includes/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
 ClapTrap::ClapTrap()
-    : name("default"), hp(10), ep(10), ad(10)
+	: name("default"), hp(10), ep(10), ad(0)
 {
-    std::cout << "Clap trap default constructor was called" << std::endl;
+	std::cout << "ClapTrap(void) constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
-    : name(name), hp(10), ep(10), ad(10)
+	: name(name), hp(10), ep(10), ad(0)
 {
-    std::cout << "ClapTrap(\"" << name << "\") constructor called" << std::endl;
+	std::cout << "ClapTrap(\"" << name << "\") constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& clapTrap)
-    : name(clapTrap.name), hp(clapTrap.hp), ep(clapTrap.ep), ad(clapTrap.ad)
+ClapTrap::ClapTrap(const ClapTrap& other)
+	: name(other.name), hp(other.hp), ep(other.ep), ad(other.ad) 
 {
-    std::cout << "ScavTrap copy constructor called on " << std::endl;
+	std::cout << "ClapTrap copy constructor called on " << other.name << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap)
 {
-    this->name = clapTrap.name;
-    this->ad = clapTrap.ad;
-    this->hp = clapTrap.hp;
-    this->ep = clapTrap.ep;
-    return *this;
+	this->name = clapTrap.name;
+	this->hp = clapTrap.hp;
+	this->ep = clapTrap.ep;
+	this->ad = clapTrap.ad;
+	return *this;
 }
 
 ClapTrap::~ClapTrap()
 {
+	std::cout << "ClapTrap destructor called for " << this->name << std::endl;
 }
 
 void ClapTrap::attack(std::string const & target)
 {
-    std::cout << "ClapTrap " << this->name;
+	std::cout << "ClapTrap " << this->name;
 	if (this->ep > 0)
 	{
-		this->ep -= (this->ep >= 5) ? 5 : this->ep;
+		this->ep -= 5;
 		std::cout << " attacked " << target << ", causing " << this->ad << " points of damage!" << std::endl;
 	}
 	else
@@ -46,26 +47,23 @@ void ClapTrap::attack(std::string const & target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "ClapTrap " << this->name;
-    if (this->hp == 0)
-    {
-        std::cout << " is already dead, enough!" << std::endl;
-    }
-    else if (amount > this->hp)
-    {
-        std::cout << " is died" << std::endl;
-    }
-    else
-    {
-        this->hp -= amount;
-        std::cout << " took " << amount << " points damage" 
-        << ". There is also " << this->hp << " hp" << std::endl; 
-    }
+	std::cout << "ClapTrap " << this->name;
+	if (this->hp == 0)
+		std::cout << " is already dead, stop it!";
+	else if (amount > this->hp)
+	{
+		std::cout << " takes " << this->hp << " damage and dies!" << std::endl;
+		this->hp = 0;
+	}
+	else
+	{
+		this->hp -= amount;
+		std::cout << " takes " << amount << " damage, " << this->hp << " hp remaining!" << std::endl;
+	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    this->hp += amount;
-	std::cout << "ClapTrap " << this->name << " is healed " << amount 
-    << " hit points, now has " << this->hp << " hit points." << std::endl;
+	this->hp += amount;
+	std::cout << "ClapTrap " << this->name << " is healed " << amount << " hit points, now has " << this->hp << " hit points." << std::endl;
 }
