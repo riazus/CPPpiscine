@@ -1,12 +1,12 @@
 NAME	=	ShowMemory
 
-CC			=	clang++
-CPPFLAGS	=	-Wall -Werror -Wextra 
+CC			=	c++
+CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 
 RM			=	rm -rf
 
 SRCS		=	main.cpp
-
 OBJS		=	$(SRCS:%.cpp=%.o)
+DEPS		=	$(SRCS:%.cpp=%.d)
 
 all:		$(NAME)
 
@@ -20,10 +20,13 @@ $(NAME):	$(OBJS)
 
 clean:
 			@$(RM) $(OBJS)
+			@$(RM) $(DEPS)
 			@echo "Removed object files." 
 
 fclean:		clean
 			@$(RM) $(NAME)
 			@echo "Removed executable."
+
+DEPS		=	$(SRCS:%.cpp=%.d)
 
 re:			fclean all

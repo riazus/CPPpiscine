@@ -1,8 +1,8 @@
 NAME	=	FileWriter
 
-CC			=	clang++
+CC			=	c++
 INCLUDES	=	includes
-CPPFLAGS	=	-Wall -Werror -Wextra -I$(INCLUDES)
+CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -std=c++0x -I$(INCLUDES)
 RM			=	rm -rf
 
 SRCS		=	srcs/Validator.cpp \
@@ -10,6 +10,7 @@ SRCS		=	srcs/Validator.cpp \
 				srcs/main.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
+DEPS		=	$(SRCS:%.cpp=%.d)
 
 all:		$(NAME)
 
@@ -23,6 +24,7 @@ $(NAME):	$(OBJS)
 
 clean:
 			@$(RM) $(OBJS)
+			@$(RM) $(DEPS)
 			@echo "Removed object files." 
 
 fclean:		clean
@@ -30,5 +32,7 @@ fclean:		clean
 			@echo "Removed executable."
 
 re:			fclean all
+
+-include $(DEPS)
 
 .PHONY:		fclean, all, re
