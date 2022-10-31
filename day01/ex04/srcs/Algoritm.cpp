@@ -23,9 +23,10 @@ void Algoritm::WriteToNewFile(void)
     while(std::getline(readFile, fileLine))
     {
         indFind = fileLine.find(this->s1);
-        if (indFind != std::string::npos)
+        while (indFind != std::string::npos)
         {
-            fileLine = Algoritm::MyReplace(fileLine, indFind, this->s1.length(), this->s2);
+            fileLine = Algoritm::MyReplace(fileLine, indFind, this->s1.length() + indFind, this->s2);
+            indFind = fileLine.find(this->s1);
         }
         writeFile << fileLine << std::endl;
     }
@@ -33,9 +34,9 @@ void Algoritm::WriteToNewFile(void)
     writeFile.close();
 }
 
-std::string Algoritm::MyReplace(std::string line, int start, int len, std::string dest)
+std::string Algoritm::MyReplace(std::string line, int start, int end, std::string dest)
 {
     std::string firstPart = line.substr(0, start);
-    std::string secondPart = line.substr(start + len, line.length());
+    std::string secondPart = line.substr(end, line.length());
     return firstPart + dest + secondPart;
 }
