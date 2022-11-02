@@ -8,6 +8,11 @@ Zombie* zombieHorde( int N, std::string name )
         std::cout << "Bad allocation memory" << std::endl;
         std::exit(1);
     }
+    else if (N == 0)
+    {
+        std::cout << "Nothing to allocate" << std::endl;
+        std::exit(1);
+    }
     for (int i = 0; i < N; i++)
     {
         zombies[i].setName(name + std::to_string(i + 1));
