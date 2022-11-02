@@ -1,6 +1,16 @@
 #include "../includes/Harl.hpp"
 #include <iostream>
 
+void putPhrases(int ind, std::string levels[4], Harl Harl)
+{
+	for (int j = 4; ind < j; ind++)
+	{
+		std::cout << "[ " << levels[ind] << " ]" << std::endl;
+		Harl.complain(levels[ind]);
+		std::cout << std::endl;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	Harl Harl;
@@ -19,21 +29,16 @@ int main(int argc, char **argv)
 		switch (i)
 		{
 			case 0:
-				std::cout << "[ " << levels[0] << " ]" << std::endl;
-				Harl.complain(levels[0]);
-				std::cout << std::endl;
+				putPhrases(i, levels, Harl);
+				break;
 			case 1:
-				std::cout << "[ " << levels[1] << " ]" << std::endl;
-				Harl.complain(levels[1]);
-				std::cout << std::endl;
+				putPhrases(i, levels, Harl);
+				break;
 			case 2:
-				std::cout << "[ " << levels[2] << " ]" << std::endl;
-				Harl.complain(levels[2]);
-				std::cout << std::endl;
+				putPhrases(i, levels, Harl);
+				break;
 			case 3:
-				std::cout << "[ " << levels[3] << " ]" << std::endl;
-				Harl.complain(levels[3]);
-				std::cout << std::endl;
+				putPhrases(i, levels, Harl);
 				break;
 			default:
 				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
