@@ -5,8 +5,8 @@ class Brain
 {
 	public:
 		Brain();
-		Brain(const Brain& other);
-		Brain& operator=(const Brain& rhs);
+		Brain(const Brain& brain);
+		Brain& operator=(const Brain& brain);
 		~Brain();
 
 		const std::string& getIdea(int index) const;
