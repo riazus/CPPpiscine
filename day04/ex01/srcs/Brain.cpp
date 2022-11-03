@@ -11,8 +11,10 @@ Brain::Brain()
 		"I want a treat"
 	};
 	for (int i = 0; i < 100; i++)
-		this->ideas[i] = examples[1 % (sizeof(examples) / sizeof(std::string))];
-	std::cout << "Brain(void) constructor called" << std::endl;
+	{
+		this->ideas[i] = examples[i % (sizeof(examples) / sizeof(std::string))];
+	}
+	std::cout << "Brain default constructor called" << std::endl;
 }
 
 Brain::Brain(const Brain& brain)
@@ -29,6 +31,7 @@ Brain& Brain::operator=(const Brain& brain)
 		for (int i = 0; i < 100; i++)
 			this->ideas[i] = brain.ideas[i];
 	}
+	std::cout << "Brain's assignment operator was called" << std::endl;
 	return *this;
 }
 
