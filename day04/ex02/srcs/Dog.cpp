@@ -15,7 +15,7 @@ Dog::Dog(std::string type)
 Dog::Dog(const Dog &dog)
     : Animal(dog)
 {
-    this->brain = dog.brain;
+    this->brain = new Brain(*dog.brain);
     std::cout << "Dog's copy constructor was called" << std::endl;
 }
 

@@ -29,6 +29,7 @@ int main()
 	second->getBrain()->getIdea(0);
 	std::cout << std::endl;
 	delete first;
+	delete second;
 
 	return (0);
 }

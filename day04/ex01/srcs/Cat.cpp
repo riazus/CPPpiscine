@@ -15,7 +15,7 @@ Cat::Cat(std::string type)
 Cat::Cat(const Cat &cat)
     : Animal(cat)
 {
-    this->brain = cat.brain;
+    this->brain = new Brain(*cat.brain);
     std::cout << "Cat's copy constructor was called" << std::endl;
 }
 
