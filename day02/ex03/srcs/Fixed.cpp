@@ -57,7 +57,7 @@ int Fixed::toInt(void) const
 	return this->StoreNum >> FractionalBitsNum;
 }
 
-#pragma region Comparison operators
+/************ Comparison operators ************/
 bool Fixed::operator >(const Fixed& fixed)
 {
     return this->StoreNum > fixed.StoreNum;
@@ -87,9 +87,8 @@ bool Fixed::operator !=(const Fixed& fixed)
 {
     return this->StoreNum != fixed.StoreNum;
 }
-#pragma endregion
 
-#pragma region Arithmetic operators
+/************ Arithmetic operators ************/
 Fixed Fixed::operator +(const Fixed& fixed)
 {
     Fixed returnFixed;
@@ -121,9 +120,8 @@ Fixed Fixed::operator /(const Fixed& fixed)
     returnFixed.setRawBits(this->StoreNum * (1 << FractionalBitsNum) / fixed.StoreNum);
     return returnFixed;
 }
-#pragma endregion
 
-#pragma region Unary increment/decrement operators
+/************ Unary increment/decrement operators ************/
 Fixed& Fixed::operator++()
 {
     this->StoreNum++;
@@ -149,9 +147,8 @@ Fixed Fixed::operator--(int)
     --*this;
     return tmp;
 }
-#pragma endregion
 
-#pragma region Min/max
+/************ region Min/max ************/
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
     return a < b? a : b;
@@ -171,8 +168,6 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
     return a.StoreNum > b.StoreNum? a : b;
 }
-
-#pragma endregion
 
 std::ostream& operator<<(std::ostream& o, const Fixed& fixed)
 {

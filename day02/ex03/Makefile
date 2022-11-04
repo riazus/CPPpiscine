@@ -2,7 +2,7 @@ NAME	=	a.out
 
 CC			=	c++
 INCLUDES	=	includes
-CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -I$(INCLUDES)
+CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -std=c++0x -I$(INCLUDES)
 RM			=	rm -rf
 
 SRCS		=	srcs/Fixed.cpp \
