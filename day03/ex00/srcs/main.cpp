@@ -7,18 +7,29 @@ int main()
 	ClapTrap joe("Joe");
 	int i = 0;
 
-	while (!john.isDied && !jim.isDied && !joe.isDied)
+	while (!john.getIsDied() && !jim.getIsDied() && !joe.getIsDied())
 	{
 		std::cout << "********* " << i << " cycle" << " *********" << std::endl;
 		john.attack(jim.getName());
-		jim.takeDamage(john.getAttackDamage());
-		jim.beRepaired(john.getAttackDamage());
+		if (!john.getIsDied())
+		{
+			jim.takeDamage(john.getAttackDamage());
+			jim.beRepaired(john.getAttackDamage());
+		}
+
 		jim.attack(joe.getName());
-		joe.takeDamage(jim.getAttackDamage());
-		joe.beRepaired(jim.getAttackDamage());
+		if (!jim.getIsDied())
+		{
+			joe.takeDamage(jim.getAttackDamage());
+			joe.beRepaired(jim.getAttackDamage());
+		}
+
 		joe.attack(john.getName());
-		john.takeDamage(joe.getAttackDamage());
-		john.beRepaired(joe.getAttackDamage());
+		if (!joe.getIsDied())
+		{
+			john.takeDamage(joe.getAttackDamage());
+			john.beRepaired(joe.getAttackDamage());
+		}
 		i++;
 	}
 }

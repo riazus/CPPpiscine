@@ -30,7 +30,8 @@ fclean:		clean
 			@$(RM) $(NAME)
 			@echo "Removed executable."
 
-re:			fclean all
+re:			fclean 
+			make all
 
 -include $(DEPS)
 

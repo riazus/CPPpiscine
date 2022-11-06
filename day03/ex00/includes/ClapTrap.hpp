@@ -17,12 +17,12 @@ public:
 
 	std::string getName() const;
 	unsigned int getAttackDamage() const;
-
-	bool isDied;
+	bool getIsDied() const;
 
 private:
 	std::string		name;
 	unsigned int	hp;
 	unsigned int	ep;
 	unsigned int	ad;
+	bool 			isDied;
 };
