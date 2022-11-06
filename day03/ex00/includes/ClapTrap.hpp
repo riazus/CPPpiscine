@@ -4,25 +4,25 @@
 
 class ClapTrap
 {
-public:
-	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap& clapTrap);
-	ClapTrap& operator=(const ClapTrap& clapTrap);
-	~ClapTrap();
+	public:
+		ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap& clapTrap);
+		ClapTrap& operator=(const ClapTrap& clapTrap);
+		~ClapTrap();
 
-	void attack(std::string const & target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+		void attack(std::string const & target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 
-	std::string getName() const;
-	unsigned int getAttackDamage() const;
-	bool getIsDied() const;
+		std::string getName() const;
+		unsigned int getAttackDamage() const;
+		bool getIsDied() const;
 
-private:
-	std::string		name;
-	unsigned int	hp;
-	unsigned int	ep;
-	unsigned int	ad;
-	bool 			isDied;
+	private:
+		std::string		name;
+		unsigned int	hp;
+		unsigned int	ep;
+		unsigned int	ad;
+		bool 			isDied;
 };
