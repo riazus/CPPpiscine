@@ -15,9 +15,14 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
+	std::string getName() const;
+	unsigned int getAttackDamage() const;
+	bool getIsDied() const;
+
 protected:
 	std::string		name;
 	unsigned int	hp;
 	unsigned int	ep;
 	unsigned int	ad;
+	bool 			isDied;
 };
