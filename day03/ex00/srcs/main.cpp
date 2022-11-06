@@ -5,13 +5,20 @@ int main()
 	ClapTrap john("John");
 	ClapTrap jim("Jim");
 	ClapTrap joe("Joe");
+	int i = 0;
 
-	john.attack("Marge");
-	john.attack("Bart");
-	john.attack("Homer");
-	john.takeDamage(5);
-	jim.takeDamage(9);
-	jim.takeDamage(10);
-	joe.beRepaired(10);
-	joe.takeDamage(19);
+	while (!john.isDied && !jim.isDied && !joe.isDied)
+	{
+		std::cout << "********* " << i << " cycle" << " *********" << std::endl;
+		john.attack(jim.getName());
+		jim.takeDamage(john.getAttackDamage());
+		jim.beRepaired(john.getAttackDamage());
+		jim.attack(joe.getName());
+		joe.takeDamage(jim.getAttackDamage());
+		joe.beRepaired(jim.getAttackDamage());
+		joe.attack(john.getName());
+		john.takeDamage(joe.getAttackDamage());
+		john.beRepaired(joe.getAttackDamage());
+		i++;
+	}
 }
