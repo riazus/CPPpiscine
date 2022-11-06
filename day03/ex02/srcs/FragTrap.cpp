@@ -13,7 +13,7 @@ FragTrap::FragTrap()
 FragTrap::FragTrap(std::string name)
 	: ClapTrap(name)
 {
-	std::cout << "FragTrap(\"" << name << "\") constructor called" << std::endl;
+	std::cout << "FragTrap constructor with name parameters was called" << std::endl;
 	this->hp = 100;
 	this->ep = 100;
 	this->ad = 30;
@@ -28,6 +28,7 @@ FragTrap::FragTrap(const FragTrap& other)
 FragTrap& FragTrap::operator=(const FragTrap& rhs)
 {
 	ClapTrap::operator=(rhs);
+	std::cout << "FragTrap assigment operator was called" << std::endl;
 	return *this;
 }
 
@@ -39,13 +40,16 @@ FragTrap::~FragTrap()
 void FragTrap::attack(std::string const & target)
 {
 	std::cout << "FragTrap " << this->name;
-	if (this->ep > 0)
+	if (this->ep > 0 && this->hp > 0)
 	{
-		this->ep -= 5;
+		this->ep -= 1;
 		std::cout << " attacked " << target << ", causing " << this->ad << " points of damage!" << std::endl;
 	}
 	else
+	{
+		this-> isDied = true;
 		std::cout << " has too little energy points to attack." << std::endl;
+	}
 }
 
 void FragTrap::highFivesGuys()

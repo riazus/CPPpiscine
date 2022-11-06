@@ -9,21 +9,48 @@ int main()
 	ClapTrap joe("Joe");
 	ScavTrap jane("Jane");
 	FragTrap joseph("Joseph");
+	int i = 0;
 
-	john.attack("Marge");
-	john.attack("Bart");
-	john.attack("Homer");
-	john.takeDamage(5);
-	jim.takeDamage(9);
-	jim.takeDamage(10);
-	joe.beRepaired(10);
-	joe.takeDamage(19);
-	jane.attack("Lisa");
-	jane.takeDamage(99);
-	jane.beRepaired(50);
-	jane.guardGate();
-	joseph.attack("Maggie");
-	joseph.takeDamage(99);
-	joseph.beRepaired(50);
-	joseph.highFivesGuys();
+	while (!john.getIsDied() || !jim.getIsDied() || !joe.getIsDied() 
+			|| !jane.getIsDied() || !joseph.getIsDied())
+	{
+		std::cout << "********* " << i << " cycle" << " *********" << std::endl;
+
+		john.attack(jim.getName());
+		if (!john.getIsDied())
+		{
+			jim.beRepaired(john.getAttackDamage());
+			jim.takeDamage(john.getAttackDamage());
+		}
+		jim.attack(joe.getName());
+
+		if (!jim.getIsDied())
+		{
+			joe.takeDamage(jim.getAttackDamage());
+			joe.beRepaired(jim.getAttackDamage());
+		}
+		joe.attack(jane.getName());
+
+		if (!joe.getIsDied())
+		{
+			jane.takeDamage(joe.getAttackDamage());
+			jane.beRepaired(joe.getAttackDamage());
+		}
+		jane.attack(joseph.getName());
+
+		if(!jane.getIsDied())
+		{
+			joseph.takeDamage(jane.getAttackDamage());
+			joseph.beRepaired(jane.getAttackDamage());
+		}
+		
+		joseph.attack(john.getName());
+		if(!joseph.getIsDied())
+		{
+			john.takeDamage(joseph.getAttackDamage());
+			john.beRepaired(joseph.getAttackDamage());
+		}
+		i++;
+	}
+
 }
