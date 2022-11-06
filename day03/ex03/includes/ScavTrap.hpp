@@ -1,3 +1,4 @@
+#pragma once
 #include "ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap
@@ -5,8 +6,10 @@ class ScavTrap : virtual public ClapTrap
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& other);
+		ScavTrap(const ScavTrap& scavTrap);
+
 		ScavTrap& operator=(const ScavTrap& scavTrap);
+
 		~ScavTrap();
 
 		void attack(std::string const & target);

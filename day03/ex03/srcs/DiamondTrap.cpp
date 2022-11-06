@@ -2,18 +2,18 @@
 #include <iostream>
 
 DiamondTrap::DiamondTrap()
-	: ClapTrap("defaultclapname"), ScavTrap(), FragTrap(), name("default")
+	: ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
 {
-	std::cout << "DiamondTrap(void) constructor called" << std::endl;
+	std::cout << "DiamondTrap default constructor called" << std::endl;
 	this->FragTrap::hp = 100;
 	this->ScavTrap::ep = 50;
 	this->FragTrap::ad = 30;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-	: ClapTrap(name + "clapname"), ScavTrap(), FragTrap(), name(name)
+	: ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap(), name(name)
 {
-	std::cout << "DiamondTrap(\"" << name << "\") constructor called" << std::endl;
+	std::cout << "DiamondTrap constructor with name parameters was called" << std::endl;
 	this->FragTrap::hp = 100;
 	this->ScavTrap::ep = 50;
 	this->FragTrap::ad = 30;
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(std::string name)
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
 	: ClapTrap(other), ScavTrap(), FragTrap()
 {
-	std::cout << "DiamondTrap copy constructor called on " << other.name << std::endl;
+	std::cout << "DiamondTrap copy constructor was called" << std::endl;
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diamondTrap)
@@ -30,6 +30,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diamondTrap)
 	ClapTrap::operator=(diamondTrap);
 	ScavTrap();
 	FragTrap();
+	std::cout << "DiamondTrap assigment operator was called" << std::endl;
 	return *this;
 }
 

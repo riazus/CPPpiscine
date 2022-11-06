@@ -1,10 +1,10 @@
-#include "ScavTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 #include <iostream>
 
 ScavTrap::ScavTrap()
 	: ClapTrap()
 {
-	std::cout << "ScavTrap(void) constructor called" << std::endl;
+	std::cout << "ScavTrap default constructor was called" << std::endl;
 	this->hp = 100;
 	this->ep = 50;
 	this->ad = 20;
@@ -13,21 +13,22 @@ ScavTrap::ScavTrap()
 ScavTrap::ScavTrap(std::string name)
 	: ClapTrap(name)
 {
-	std::cout << "ScavTrap(\"" << name << "\") constructor called" << std::endl;
+	std::cout << "ScavTrap constructor with name parameters was called" << std::endl;
 	this->hp = 100;
 	this->ep = 50;
 	this->ad = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other)
-	: ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap& scavTrap)
+	: ClapTrap(scavTrap)
 {
-	std::cout << "ScavTrap copy constructor called on " << other.name << std::endl;
+	std::cout << "ScavTrap copy constructor was called" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& scavTrap)
+ScavTrap& ScavTrap::operator=(const ScavTrap& rhs)
 {
-	ClapTrap::operator=(scavTrap);
+	ClapTrap::operator=(rhs);
+	std::cout << "ScavTrap assigment operator was called" << std::endl;
 	return *this;
 }
 
@@ -39,13 +40,16 @@ ScavTrap::~ScavTrap()
 void ScavTrap::attack(std::string const & target)
 {
 	std::cout << "ScavTrap " << this->name;
-	if (this->ep > 0)
+	if (this->ep > 0 && this->hp > 0)
 	{
-		this->ep -= 5;
+		this->ep -= 1;
 		std::cout << " attacked " << target << ", causing " << this->ad << " points of damage!" << std::endl;
 	}
 	else
+    {
+        this-> isDied = true;
 		std::cout << " has too little energy points to attack." << std::endl;
+    }
 }
 
 void ScavTrap::guardGate()
