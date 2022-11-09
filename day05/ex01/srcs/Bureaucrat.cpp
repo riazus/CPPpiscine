@@ -4,7 +4,7 @@
 Bureaucrat::Bureaucrat()
     : name("Default"), grade(150)
 {
-    std::cout << "Default constructor was called" << std::endl;
+    //std::cout << "Default constructor was called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
@@ -27,20 +27,20 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
 Bureaucrat::Bureaucrat(Bureaucrat &bur)
     : name(bur.name), grade(bur.grade)
 {
-    std::cout << "Copy constructor was called" << std::endl;
+    //std::cout << "Copy constructor was called" << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat &bur)
 {
     this->name = bur.name;
     this->grade = bur.grade;
-    std::cout << "Assingment operator was called" << std::endl;
+    //std::cout << "Assingment operator was called" << std::endl;
     return *this;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Default destructor was called" << std::endl;
+    //std::cout << "Default destructor was called" << std::endl;
 }
 
 void Bureaucrat::incrementGrade()
