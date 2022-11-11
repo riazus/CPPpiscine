@@ -2,13 +2,18 @@
 
 class ShrubberyCreationForm : public Form
 {
-    public :
-        ShrubberyCreationForm(const std::string &target);
-        ShrubberyCreationForm(const ShrubberyCreationForm &scf);
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &scf);
-        ~ShrubberyCreationForm();
+	public:
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(const std::string& target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
+		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& rhs);
+		~ShrubberyCreationForm();
+		
+		void action(const Bureaucrat& executor) const;
 
-        void action(const Bureaucrat& executor) const;
-    private :
-        ShrubberyCreationForm();
+		class ErrorOpenFile : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };

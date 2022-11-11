@@ -1,13 +1,11 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/Intern.hpp"
 
 int main()
 {
-	//srand(time(NULL));
-
 	Bureaucrat john("John", 5);
 	Bureaucrat jim("Jim", 45);
 	Bureaucrat jane("Jane", 137);
@@ -16,47 +14,64 @@ int main()
 	std::cout << jim << std::endl;
 	std::cout << jane << std::endl;
 
-	ShrubberyCreationForm shrubbery("home");
-	PresidentialPardonForm pardon("Stephen Bannon");
-	RobotomyRequestForm robotomy("Bender");
+	Intern intern;
 
-	john.executeForm(shrubbery);
-	jim.executeForm(shrubbery);
-	jane.executeForm(shrubbery);
+	Form* formA;
+	Form* formB;
+	Form* formC;
+	Form* formD;
+
+	try
+	{
+		formA = intern.makeForm("shrubbery creation", "home");
+		formB = intern.makeForm("robotomy request", "Bender");
+		formC = intern.makeForm("presidential pardon", "Stephen Bannon");
+		formD = intern.makeForm("test", "test");
+		(void) formD;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	std::cout << std::endl;
-	john.signForm(shrubbery);
-	jim.signForm(shrubbery);
-	jane.signForm(shrubbery);
+	john.executeForm(*formA);
+	jim.executeForm(*formA);
+	jane.executeForm(*formA);
 	std::cout << std::endl;
-	john.executeForm(shrubbery);
-	jim.executeForm(shrubbery);
-	jane.executeForm(shrubbery);
+	john.signForm(*formA);
+	jim.signForm(*formA);
+	jane.signForm(*formA);
+	std::cout << std::endl;
+	john.executeForm(*formA);
+	jim.executeForm(*formA);
+	jane.executeForm(*formA);
 	std::cout << std::endl;
 	std::cout << "-------------------------------------------------------" << std::endl;
 	std::cout << std::endl;
-	john.executeForm(pardon);
-	jim.executeForm(pardon);
-	jane.executeForm(pardon);
+	john.executeForm(*formB);
+	jim.executeForm(*formB);
+	jane.executeForm(*formB);
 	std::cout << std::endl;
-	john.signForm(pardon);
-	jim.signForm(pardon);
-	jane.signForm(pardon);
+	john.signForm(*formB);
+	jim.signForm(*formB);
+	jane.signForm(*formB);
 	std::cout << std::endl;
-	john.executeForm(pardon);
-	jim.executeForm(pardon);
-	jane.executeForm(pardon);
+	john.executeForm(*formB);
+	jim.executeForm(*formB);
+	jane.executeForm(*formB);
 	std::cout << std::endl;
 	std::cout << "-------------------------------------------------------" << std::endl;
 	std::cout << std::endl;
-	john.executeForm(robotomy);
-	jim.executeForm(robotomy);
-	jane.executeForm(robotomy);
+	john.executeForm(*formC);
+	jim.executeForm(*formC);
+	jane.executeForm(*formC);
 	std::cout << std::endl;
-	john.signForm(robotomy);
-	jim.signForm(robotomy);
-	jane.signForm(robotomy);
+	john.signForm(*formC);
+	jim.signForm(*formC);
+	jane.signForm(*formC);
 	std::cout << std::endl;
-	john.executeForm(robotomy);
-	jim.executeForm(robotomy);
-	jane.executeForm(robotomy);
+	john.executeForm(*formC);
+	jim.executeForm(*formC);
+	jane.executeForm(*formC);
 }

@@ -1,13 +1,22 @@
 #include "Form.hpp"
+#include <cstdlib>
 
 class RobotomyRequestForm : public Form
 {
-    public :
-        RobotomyRequestForm();
-        RobotomyRequestForm(const std::string &target);
-        RobotomyRequestForm(const RobotomyRequestForm &rrf);
-        RobotomyRequestForm &operator=(const RobotomyRequestForm &rrf);
-        ~RobotomyRequestForm();
+public:
+	// Constructors
+	RobotomyRequestForm(const std::string& target);
+	RobotomyRequestForm(const RobotomyRequestForm& other);
 
-        void action(const Bureaucrat& executor) const;
+	// Assignment operator overload
+	RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
+
+	// Destructor
+	~RobotomyRequestForm();
+
+	void action(const Bureaucrat& executor) const;
+
+private:
+
+	RobotomyRequestForm();
 };
