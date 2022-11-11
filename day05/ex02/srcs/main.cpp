@@ -5,8 +5,6 @@
 
 int main()
 {
-	//srand(time(NULL));
-
 	Bureaucrat john("John", 5);
 	Bureaucrat jim("Jim", 45);
 	Bureaucrat jane("Jane", 137);
