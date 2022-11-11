@@ -2,12 +2,20 @@
 
 class PresidentialPardonForm : public Form
 {
-    public :
-        PresidentialPardonForm();
-        PresidentialPardonForm(const std::string &target);
-        PresidentialPardonForm(const PresidentialPardonForm &ppf);
-        PresidentialPardonForm &operator=(const PresidentialPardonForm &ppf);
-        ~PresidentialPardonForm();
+public:
+	// Constructors
+	PresidentialPardonForm(const std::string& target);
+	PresidentialPardonForm(const PresidentialPardonForm& other);
 
-        void action(const Bureaucrat& executor) const;
+	// Assignment operator overload
+	PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
+
+	// Destructor
+	~PresidentialPardonForm();
+
+	void action(const Bureaucrat& executor) const;
+
+private:
+
+	PresidentialPardonForm();
 };

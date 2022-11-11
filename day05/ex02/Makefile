@@ -1,15 +1,15 @@
-NAME	=	Form
+NAME	=	ManyClasses
 
 CC			=	c++
 INCLUDES	=	includes
 CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -I$(INCLUDES)
 RM			=	rm -rf
 
-SRCS		=	srcs/Bureaucrat.cpp \
-				srcs/Form.cpp \
-				srcs/ShrubberyCreationForm.cpp \
-				srcs/RobotomyRequestForm.cpp \
+SRCS		=	srcs/ShrubberyCreationForm.cpp \
 				srcs/PresidentialPardonForm.cpp \
+				srcs/RobotomyRequestForm.cpp \
+				srcs/Bureaucrat.cpp \
+				srcs/Form.cpp \
 				srcs/main.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)

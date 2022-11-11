@@ -1,12 +1,13 @@
 #include "../includes/Form.hpp"
 #include "../includes/Bureaucrat.hpp"
 
-Form::Form(const std::string &name)
-    : name(name), isSigned(false), gradeSign(1), gradeExec(1)
+Form::Form()
+    : name("Default"), target(""), isSigned(false), gradeSign(1), gradeExec(1)
 {
+    std::cout << "Default constructor was called" << std::endl;
 }
 
-Form::Form(const std::string &name, const std::string &target)
+Form::Form(const std::string &name, const std::string& target)
     : name(name), target(target), isSigned(false), gradeSign(1), gradeExec(1)
 {
 }
@@ -24,6 +25,20 @@ Form::Form(const std::string& name, const unsigned int gradeSign, const unsigned
     }
 }
 
+Form::Form(const std::string& name, const std::string& target, const unsigned int gradeSign, const unsigned int gradeExec)
+        : name(name), target(target), isSigned(false), gradeSign(gradeSign), gradeExec(gradeExec)
+{
+        if (gradeSign < 1 || gradeExec < 1)
+        {
+                throw Form::GradeTooHighException();
+        }
+        else if (gradeSign > 150 || gradeExec > 150)
+        {
+                throw Form::GradeTooLowException();
+        }
+}
+
+
 Form::Form(const Form &form)
     : name(form.name), target(form.target), isSigned(form.isSigned), gradeSign(form.gradeSign), gradeExec(form.gradeExec)
 {
@@ -31,7 +46,7 @@ Form::Form(const Form &form)
 
 Form& Form::operator=(const Form& form)
 {
-    this->isSigned = form.isSigned;
+    (void)form;
     return *this;
 }
 
@@ -61,7 +76,7 @@ bool Form::getIsSigned() const
 
 std::string Form::getTarget() const
 {
-    return this->target;
+	return this->target;
 }
 
 void Form::beSigned(const Bureaucrat& candidate)
@@ -86,13 +101,13 @@ void Form::beSigned(const Bureaucrat& candidate)
 void Form::execute(const Bureaucrat& executor) const
 {
 	if (!this->getIsSigned())
-    {
+	{
 		throw Form::FormNotSignedException();
-    }
+	}
 	if (executor.getGrade() > this->getGradeExec())
-    {
+	{
 		throw Form::GradeTooLowException();
-    }
+	}
 }
 
 const char* Form::GradeTooLowException::what() const throw()
@@ -112,7 +127,7 @@ const char* Form::FormAlreadySignedException::what() const throw()
 
 const char* Form::FormNotSignedException::what() const throw()
 {
-    return ("form is already signed");
+	return ("Form not signed yet");
 }
 
 std::ostream& operator<<(std::ostream& o, const Form& form)
