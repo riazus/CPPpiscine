@@ -1,15 +1,11 @@
-NAME	=	Intern
+NAME	=	convert
 
 CC			=	c++
 INCLUDES	=	includes
 CPPFLAGS	=	-MD -Wall -Werror -Wextra -std=c++98 -I$(INCLUDES)
 RM			=	rm -rf
 
-SRCS		=	stcs/Obj.cpp \
-				srcs/Char.cpp \
-				srcs/Double.cpp \
-				srcs/Float.cpp \
-				srcs/Int.cpp \
+SRCS		=	srcs/Obj.cpp \
 				srcs/main.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
