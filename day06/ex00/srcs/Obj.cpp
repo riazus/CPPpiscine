@@ -83,7 +83,7 @@ char Obj::toChar() const
 		return this->charVal;
 	case Int:
 		c = static_cast<char>(this->intVal);
-		if (!isprint(c))
+		if (!isprint(c) || intVal > 127)
 			throw Obj::NonDisplayable();
 		else
 			return c;
