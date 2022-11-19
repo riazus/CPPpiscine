@@ -3,8 +3,6 @@
 
 int main()
 {
-    std::cout << "--- PDF example ---" << std::endl;
-
 	MutantStack<int> mstack;
 
 	mstack.push(5);
