@@ -18,7 +18,7 @@ int main()
 
 	try
 	{
-		std::vector<int>::iterator it_vector = easyfind(vector, 40);
+		std::vector<int>::iterator it_vector = easyfind(vector, 12);
 		std::cout << "Vector starting at 12:" << std::endl;
 		for_each(it_vector, vector.end(), print);
 	}
